@@ -4,7 +4,13 @@ const addBtn = document.getElementById('addBtn');
 const todoList = document.getElementById('todoList');
 
 // Load todos from local storage
-let todos = JSON.parse(localStorage.getItem('todos')) || [];
+let todos = [];
+try {
+    todos = JSON.parse(localStorage.getItem('todos')) || [];
+} catch (e) {
+    console.error('Error loading todos from localStorage:', e);
+    todos = [];
+}
 
 // Initialize app
 function init() {
